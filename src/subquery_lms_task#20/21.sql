@@ -143,3 +143,7 @@ select p.publisher_name,b.price from publishers p inner join
 -- 20.2010-2015 жылдардын арасындагы китептер жана автордун аты-фамилиясы чыксын.
 select b.book_name,b.book_published_year,(a.first_name,' ',a.last_name) as fullname from books b inner join authors a on b.author_id=a.id where book_published_year between '2010-01-01' and '2015-01-01';
 -- 21.2010-2015 жылдардын арасындагы китептердин авторлорунун толук аты-жону жана алардын тапкан акчаларынын жалпы суммасы чыксын.
+select a.first_name,sum(b.price) from authors a inner join books b  on b.author_id=a.id
+where b.book_published_year between '2010-01-01' and '2014-01-01'
+group by a.first_name ;
+select * from authors where first_name ='Hilliard';
